@@ -9,6 +9,10 @@ export const envVars = {
 // 需要注入的plugins，用户可以自定义覆盖此选项
 export const vitePlugins = ['legacy', 'vue', 'html'];
 export const hometownViteConfigDefault = {
+  vitePath: {
+    root: '',
+    src: ''
+  },
   envVars,
   vitePlugins
 };

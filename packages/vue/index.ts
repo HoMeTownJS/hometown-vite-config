@@ -1,6 +1,6 @@
 import { loadEnv } from 'vite';
 import type { UserConfigExport, ConfigEnv, UserConfig } from 'vite';
-import { resolvePath, createViteProxy, viteDefine, setupVitePlugins } from './build';
+import { createViteProxy, viteDefine, setupVitePlugins } from './build';
 import { hometownViteConfigDefault, type HomeTownViteConfig } from './config';
 
 export function createViteConfig(userHometownViteConfig: HomeTownViteConfig = {}, userViteConfig: UserConfig = {}) {
@@ -11,15 +11,13 @@ export function createViteConfig(userHometownViteConfig: HomeTownViteConfig = {}
 
     const viteEnv = loadEnv(mode, root);
 
-    const vitePath = resolvePath('./', import.meta.url);
-
     const viteConfig = {
       // 配置项
       base: viteEnv[hometownViteConfig.envVars.VITE_BASE_URL],
       resolve: {
         alias: {
-          '~': vitePath.root,
-          '@': vitePath.src
+          '~': hometownViteConfig.vitePath.root,
+          '@': hometownViteConfig.vitePath.src
         }
       },
       server: {
