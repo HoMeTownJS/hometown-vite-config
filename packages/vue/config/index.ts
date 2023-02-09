@@ -1,20 +1,17 @@
-// env文件变量枚举，用户可以自定义使用到的变量名称
-export const envVars = {
-  VITE_BASE_URL: 'VITE_BASE_URL',
-  VITE_HTTP_PROXY: 'VITE_HTTP_PROXY',
-  VITE_HTTP_PROXY_PREFIX: 'VITE_HTTP_PROXY_PREFIX',
-  VITE_HTTP_PROXY_URL: 'VITE_HTTP_PROXY_URL',
-  VITE_APP_NAME: 'VITE_APP_NAME'
-};
-// 需要注入的plugins，用户可以自定义覆盖此选项
-export const vitePlugins = ['legacy', 'vue', 'html'];
-export const hometownViteConfigDefault = {
-  vitePath: {
-    root: '',
-    src: ''
-  },
-  envVars,
-  vitePlugins
+export const hmtViteConfigDefault = {
+  envVarsVITE_BASE_URL: 'VITE_BASE_URL',
+  envVarsVITE_HTTP_PROXY: 'VITE_HTTP_PROXY',
+  envVarsVITE_HTTP_PROXY_PREFIX: 'VITE_HTTP_PROXY_PREFIX',
+  envVarsVITE_HTTP_PROXY_URL: 'VITE_HTTP_PROXY_URL',
+  envVarsVITE_APP_NAME: 'VITE_APP_NAME',
+  envVarsVITE_VISUALIZER: 'VITE_VISUALIZER',
+
+  vitePathRoot: '',
+  vitePathSrc: '',
+  vitePluginsDefaults: ['legacy', 'vue', 'html'],
+  vitePluginsCustom: []
 };
 
-export type HomeTownViteConfig = Partial<typeof hometownViteConfigDefault>;
+export type HmtViteConfig = typeof hmtViteConfigDefault;
+
+export type UserHmtViteConfig = Partial<typeof hmtViteConfigDefault>;

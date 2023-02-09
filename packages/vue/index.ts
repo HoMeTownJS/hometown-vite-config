@@ -1,10 +1,10 @@
 import { loadEnv } from 'vite';
 import type { UserConfigExport, ConfigEnv, UserConfig } from 'vite';
 import { createViteProxy, viteDefine, setupVitePlugins } from './build';
-import { hometownViteConfigDefault, type HomeTownViteConfig } from './config';
+import { hmtViteConfigDefault, type UserHmtViteConfig } from './config';
 
-export function createViteConfig(userHometownViteConfig: HomeTownViteConfig = {}, userViteConfig: UserConfig = {}) {
-  const hometownViteConfig = Object.assign(hometownViteConfigDefault, userHometownViteConfig);
+export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteConfig: UserConfig) {
+  const hmtViteConfig = Object.assign(hmtViteConfigDefault, userHmtViteConfig);
 
   return ({ command, mode }: ConfigEnv): UserConfigExport => {
     const root: string = process.cwd();
@@ -13,11 +13,11 @@ export function createViteConfig(userHometownViteConfig: HomeTownViteConfig = {}
 
     const viteConfig = {
       // 配置项
-      base: viteEnv[hometownViteConfig.envVars.VITE_BASE_URL],
+      base: viteEnv[hmtViteConfig.envVarsVITE_BASE_URL],
       resolve: {
         alias: {
-          '~': hometownViteConfig.vitePath.root,
-          '@': hometownViteConfig.vitePath.src
+          '~': hmtViteConfig.vitePathRoot,
+          '@': hmtViteConfig.vitePathSrc
         }
       },
       server: {
@@ -25,12 +25,12 @@ export function createViteConfig(userHometownViteConfig: HomeTownViteConfig = {}
         host: '0.0.0.0',
         open: true,
         proxy: createViteProxy(
-          viteEnv[hometownViteConfig.envVars.VITE_HTTP_PROXY] === 'true',
-          viteEnv[hometownViteConfig.envVars.VITE_HTTP_PROXY_PREFIX],
-          viteEnv[hometownViteConfig.envVars.VITE_HTTP_PROXY_URL]
+          viteEnv[hmtViteConfig.envVarsVITE_HTTP_PROXY] === 'true',
+          viteEnv[hmtViteConfig.envVarsVITE_HTTP_PROXY_PREFIX],
+          viteEnv[hmtViteConfig.envVarsVITE_HTTP_PROXY_URL]
         )
       },
-      plugins: setupVitePlugins({ command, mode }, viteEnv, hometownViteConfig),
+      plugins: setupVitePlugins({ command, mode }, viteEnv, hmtViteConfig),
       define: viteDefine
     };
 

@@ -1,8 +1,9 @@
-import type { ConfigEnv, PluginOption } from 'vite';
+import type { ConfigEnv } from 'vite';
 import vue from './vue';
 import legacy from './legacy';
 import html from './html';
-import { type HomeTownViteConfig, hometownViteConfigDefault } from '../../config';
+import visualizer from './visualizer';
+import type { HmtViteConfig } from '../../config/index';
 
 /**
  *	vite插件
@@ -13,16 +14,27 @@ import { type HomeTownViteConfig, hometownViteConfigDefault } from '../../config
 export function setupVitePlugins(
   { command, mode }: ConfigEnv,
   viteEnv: Record<string, string>,
-  { envVars, vitePlugins }: HomeTownViteConfig
-): (PluginOption | PluginOption[])[] {
+  hmtViteConfig: HmtViteConfig
+) {
   console.log(command, mode);
   const plugins = [];
 
-  if (vitePlugins?.includes('vue')) plugins.push(vue);
-  if (vitePlugins?.includes('legacy')) plugins.push(legacy);
-  if (vitePlugins?.includes('html')) {
-    plugins.push(html(viteEnv[envVars ? envVars.VITE_APP_NAME : hometownViteConfigDefault.envVars.VITE_APP_NAME]));
+  if (hmtViteConfig.vitePluginsDefaults.includes('vue')) plugins.push(vue);
+  if (hmtViteConfig.vitePluginsDefaults.includes('legacy')) plugins.push(legacy);
+  if (hmtViteConfig.vitePluginsDefaults.includes('html')) {
+    plugins.push(html(viteEnv[hmtViteConfig.envVarsVITE_APP_NAME]));
   }
 
+  if (
+    hmtViteConfig.vitePluginsDefaults.includes('visualizer') &&
+    command === 'build' &&
+    viteEnv[hmtViteConfig.envVarsVITE_VISUALIZER] === 'true'
+  ) {
+    plugins.push(visualizer);
+  }
+
+  if (hmtViteConfig.vitePluginsCustom.length > 0) {
+    return [...plugins, ...hmtViteConfig.vitePluginsCustom];
+  }
   return plugins;
 }
