@@ -1,0 +1,55 @@
+{
+  "name": "@hometownjs/vite-config-vue",
+  "version": "0.0.1",
+  "description": "HoMeTownJS's vite config presets for Vue",
+  "author": {
+    "name": "HoMeTownJS",
+    "email": "hometownsocool@gmail.com",
+    "url": "https://github.com/HoMeTownJS"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/HoMeTownJS/hometown-vite-config",
+  "repository": {
+    "url": "https://github.com/HoMeTownJS/hometown-vite-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HoMeTownJS/hometown-vite-config/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint . --config=index.js",
+    "publish-pkg": "pnpm publish --access public",
+    "update-version": "bumpp package.json"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@vitejs/plugin-legacy": "^4.0.1",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "vite": "2.9.1",
+    "vite-plugin-html": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^4.0.1",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "bumpp": "^8.2.1",
+    "tsup": "^6.5.0",
+    "vite": "2.9.1",
+    "vite-plugin-html": "^3.2.0"
+  }
+}

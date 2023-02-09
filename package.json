@@ -1,5 +1,5 @@
 {
-  "name": "@hometownjs/vite-config",
+  "name": "hometown-vite-config",
   "version": "0.0.1",
   "description": "HoMeTownJS's vite config presets.",
   "author": {
@@ -15,32 +15,20 @@
   "bugs": {
     "url": "https://github.com/HoMeTownJS/hometown-vite-config/issues"
   },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    },
-    "./*": "./*"
-  },
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsup",
     "lint": "eslint . --fix",
     "commit": "hometown git-commit",
     "cleanup": "hometown cleanup",
     "update-pkg": "hometown update-pkg",
-    "update-version": "bumpp package.json",
     "publish-pkg": "pnpm publish --access public",
     "init-git-hooks": "hometown init-git-hooks",
-    "release": "pnpm update-version && pnpm publish-pkg"
+    "release": "pnpm update-version && pnpm publish-pkg",
+    "update-version-vue": "pnpm --filter @hometownjs/vite-config-vue update-version",
+    "build-vue": "pnpm --filter @hometownjs/vite-config-vue build",
+    "publish-pkg-vue": "pnpm --filter @hometownjs/vite-config-vue publish-pkg"
   },
   "dependencies": {
     "vite": "2.9.1"
