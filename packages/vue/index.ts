@@ -1,9 +1,9 @@
 import { loadEnv } from 'vite';
 import type { UserConfigExport, ConfigEnv, UserConfig } from 'vite';
-import { createViteProxy, viteDefine, setupVitePlugins } from './build';
+import { createViteProxy, viteDefine, createBuild, setupVitePlugins } from './build';
 import { hmtViteConfigDefault, type UserHmtViteConfig } from './config';
 
-export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteConfig: UserConfig) {
+export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteConfig: UserConfig = {}) {
   const hmtViteConfig = Object.assign(hmtViteConfigDefault, userHmtViteConfig);
 
   return ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -31,7 +31,8 @@ export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteC
         )
       },
       plugins: setupVitePlugins({ command, mode }, viteEnv, hmtViteConfig),
-      define: viteDefine
+      define: viteDefine,
+      build: createBuild(hmtViteConfig)
     };
 
     return Object.assign(viteConfig, userViteConfig);

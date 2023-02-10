@@ -1,5 +1,6 @@
 export const hmtViteConfigDefault = {
   envVarsVITE_BASE_URL: 'VITE_BASE_URL',
+  envVarsVITE_PORT: 'VITE_PORT',
   envVarsVITE_HTTP_PROXY: 'VITE_HTTP_PROXY',
   envVarsVITE_HTTP_PROXY_PREFIX: 'VITE_HTTP_PROXY_PREFIX',
   envVarsVITE_HTTP_PROXY_URL: 'VITE_HTTP_PROXY_URL',
@@ -9,7 +10,12 @@ export const hmtViteConfigDefault = {
   vitePathRoot: '',
   vitePathSrc: '',
   vitePluginsDefaults: ['legacy', 'vue', 'html'],
-  vitePluginsCustom: []
+  vitePluginsCustom: [],
+
+  buildDropConsole: true,
+  buildDropDebugger: true,
+
+  unpluginResolvers: ['']
 };
 
 export type HmtViteConfig = typeof hmtViteConfigDefault;
