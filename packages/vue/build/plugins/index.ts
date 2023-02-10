@@ -5,6 +5,7 @@ import html from './html';
 import visualizer from './visualizer';
 import unplugin from './unplugin';
 import compression from './compression';
+import autoImport from './auto-import';
 
 import type { HmtViteConfig } from '../../config/index';
 
@@ -44,6 +45,11 @@ export function setupVitePlugins(
   // unplugin
   if (hmtViteConfig.unpluginResolvers.length > 0) {
     plugins.push(unplugin(hmtViteConfig));
+  }
+
+  // autoImport
+  if (hmtViteConfig.autoImportImports.length > 0) {
+    plugins.push(autoImport(hmtViteConfig));
   }
 
   // user custom vite plugins
