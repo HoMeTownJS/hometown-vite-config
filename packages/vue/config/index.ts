@@ -12,7 +12,6 @@ export const hmtViteConfigDefault = {
   // alias
   vitePathRoot: '',
   vitePathSrc: '',
-  vitePathImages: 'src/assets/images',
   viteAliasCustom: {},
 
   // plugins

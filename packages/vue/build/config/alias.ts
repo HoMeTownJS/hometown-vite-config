@@ -2,8 +2,7 @@ import type { HmtViteConfig } from '../../config/index';
 export function createAlias(hmtViteConfig: HmtViteConfig) {
   const viteAlias = {
     '~': hmtViteConfig.vitePathRoot,
-    '@': hmtViteConfig.vitePathSrc,
-    '/images': hmtViteConfig.vitePathImages
+    '@': hmtViteConfig.vitePathSrc
   };
   return Object.assign(viteAlias, hmtViteConfig.viteAliasCustom);
 }
