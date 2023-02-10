@@ -3,7 +3,7 @@ import type { UserConfigExport, ConfigEnv, UserConfig } from 'vite';
 import { createServer, createDefine, createBuild, createAlias, setupVitePlugins } from './build';
 import { hmtViteConfigDefault, type UserHmtViteConfig } from './config';
 
-export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteConfig: UserConfig = {}) {
+export function createViteConfig(userHmtViteConfig: UserHmtViteConfig = {}, userViteConfig: UserConfig = {}) {
   const hmtViteConfig = Object.assign(hmtViteConfigDefault, userHmtViteConfig);
 
   return ({ command, mode }: ConfigEnv): UserConfigExport => {
