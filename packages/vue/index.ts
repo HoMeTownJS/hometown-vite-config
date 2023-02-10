@@ -2,6 +2,7 @@ import { loadEnv } from 'vite';
 import type { UserConfigExport, ConfigEnv, UserConfig } from 'vite';
 import { createServer, createDefine, createBuild, createAlias, setupVitePlugins } from './build';
 import { hmtViteConfigDefault, type UserHmtViteConfig } from './config';
+import createAutoImport from './build/plugins/auto-import';
 
 export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteConfig: UserConfig = {}) {
   const hmtViteConfig = Object.assign(hmtViteConfigDefault, userHmtViteConfig);
@@ -26,3 +27,5 @@ export function createViteConfig(userHmtViteConfig: UserHmtViteConfig, userViteC
     return Object.assign(viteConfig, userViteConfig);
   };
 }
+
+export const autoImport = createAutoImport;

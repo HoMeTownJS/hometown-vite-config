@@ -1,7 +1,6 @@
 import AutoImport from 'unplugin-auto-import/vite';
-import type { HmtViteConfig } from '../../config/index';
 
-export default (hmtViteConfig: HmtViteConfig) => {
+export default () => {
   AutoImport({
     include: [
       /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -9,7 +8,7 @@ export default (hmtViteConfig: HmtViteConfig) => {
       /\.vue\?vue/, // .vue
       /\.md$/ // .md
     ],
-    imports: hmtViteConfig.autoImportImports as any[],
+    imports: ['vue', 'vue-router'],
     // auto-import.d.ts生成的位置(默认是在根目录)
     dts: true
   });

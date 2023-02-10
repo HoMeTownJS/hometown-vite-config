@@ -19,7 +19,6 @@ export const hmtViteConfigDefault = {
   vitePluginsDefaults: ['legacy', 'vue', 'html', 'visualizer'],
   vitePluginsCustom: [],
   unpluginResolvers: [''],
-  autoImportImports: ['vue', 'vue-router'],
 
   // build
   buildGenerateGz: true,
