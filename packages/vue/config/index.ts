@@ -1,21 +1,31 @@
 export const hmtViteConfigDefault = {
+  // env
   envVarsVITE_BASE_URL: 'VITE_BASE_URL',
-  envVarsVITE_PORT: 'VITE_PORT',
+  envVarsVITE_HTTP_PORT: 'VITE_HTTP_PORT',
+  envVarsVITE_HTTP_HOST: 'VITE_HTTP_HOST',
   envVarsVITE_HTTP_PROXY: 'VITE_HTTP_PROXY',
   envVarsVITE_HTTP_PROXY_PREFIX: 'VITE_HTTP_PROXY_PREFIX',
   envVarsVITE_HTTP_PROXY_URL: 'VITE_HTTP_PROXY_URL',
   envVarsVITE_APP_NAME: 'VITE_APP_NAME',
   envVarsVITE_VISUALIZER: 'VITE_VISUALIZER',
 
+  // alias
   vitePathRoot: '',
   vitePathSrc: '',
-  vitePluginsDefaults: ['legacy', 'vue', 'html'],
-  vitePluginsCustom: [],
+  vitePathImages: 'src/assets/images',
+  viteAliasCustom: {},
 
+  // plugins
+  vitePluginsDefaults: ['legacy', 'vue', 'html', 'visualizer'],
+  vitePluginsCustom: [],
+  unpluginResolvers: [''],
+  autoImportImports: ['vue', 'vue-router'],
+
+  // build
+  buildGenerateGz: true,
   buildDropConsole: true,
   buildDropDebugger: true,
-
-  unpluginResolvers: ['']
+  buildDropComments: true
 };
 
 export type HmtViteConfig = typeof hmtViteConfigDefault;

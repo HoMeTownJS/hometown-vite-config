@@ -4,6 +4,7 @@ import legacy from './legacy';
 import html from './html';
 import visualizer from './visualizer';
 import unplugin from './unplugin';
+import compression from './compression';
 
 import type { HmtViteConfig } from '../../config/index';
 
@@ -19,13 +20,19 @@ export function setupVitePlugins(
   hmtViteConfig: HmtViteConfig
 ) {
   const plugins = [];
-
+  // vue
   if (hmtViteConfig.vitePluginsDefaults.includes('vue')) plugins.push(vue);
+  // legacy
   if (hmtViteConfig.vitePluginsDefaults.includes('legacy')) plugins.push(legacy);
+  // html
   if (hmtViteConfig.vitePluginsDefaults.includes('html')) {
     plugins.push(html(viteEnv[hmtViteConfig.envVarsVITE_APP_NAME]));
   }
-
+  // compression
+  if (hmtViteConfig.buildGenerateGz) {
+    plugins.push(compression);
+  }
+  // visualizer
   if (
     hmtViteConfig.vitePluginsDefaults.includes('visualizer') &&
     command === 'build' &&
@@ -34,10 +41,12 @@ export function setupVitePlugins(
     plugins.push(visualizer);
   }
 
+  // unplugin
   if (hmtViteConfig.unpluginResolvers.length > 0) {
     plugins.push(unplugin(hmtViteConfig));
   }
 
+  // user custom vite plugins
   if (hmtViteConfig.vitePluginsCustom.length > 0) {
     return [...plugins, ...hmtViteConfig.vitePluginsCustom];
   }
