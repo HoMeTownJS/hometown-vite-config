@@ -1,6 +1,6 @@
 {
   "name": "@hometownjs/vite-config-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "HoMeTownJS's vite config presets for Vue",
   "author": {
     "name": "HoMeTownJS",
