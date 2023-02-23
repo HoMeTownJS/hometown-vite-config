@@ -23,12 +23,7 @@ export function createBuild(hmtViteConfig: HmtViteConfig) {
         chunkFileNames: 'js/[name].[hash].js',
         // 用于输出静态资源的命名，[ext]表示文件扩展名
         assetFileNames: '[ext]/[name].[hash].[ext]',
-        manualChunks(id: any): string {
-          if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
-          }
-          return '';
-        }
+        manualChunks: hmtViteConfig.buildManualChunks
       }
     }
   };

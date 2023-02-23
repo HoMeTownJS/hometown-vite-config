@@ -23,7 +23,8 @@ export const hmtViteConfigDefault = {
   buildGenerateGz: true,
   buildDropConsole: true,
   buildDropDebugger: true,
-  buildDropComments: true
+  buildDropComments: true,
+  buildManualChunks: {}
 };
 
 export type HmtViteConfig = typeof hmtViteConfigDefault;
