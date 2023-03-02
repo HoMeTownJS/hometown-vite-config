@@ -4,7 +4,7 @@ export function createServer(viteEnv: Record<string, string>, hmtViteConfig: Hmt
   const viteServer = {
     port: parseInt(viteEnv.VITE_HTTP_PORT ?? 8080, 10),
     host: viteEnv.VITE_HTTP_HOST ?? '0.0.0.0',
-    open: true,
+    open: hmtViteConfig.serverOpen,
     proxy: createViteProxy(
       viteEnv[hmtViteConfig.envVarsVITE_HTTP_PROXY] === 'true',
       viteEnv[hmtViteConfig.envVarsVITE_HTTP_PROXY_PREFIX],

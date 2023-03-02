@@ -24,7 +24,10 @@ export const hmtViteConfigDefault = {
   buildDropConsole: true,
   buildDropDebugger: true,
   buildDropComments: true,
-  buildManualChunks: {}
+  buildManualChunks: {},
+
+  // server
+  serverOpen: true
 };
 
 export type HmtViteConfig = typeof hmtViteConfigDefault;
