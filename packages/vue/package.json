@@ -1,6 +1,6 @@
 {
   "name": "@hometownjs/vite-config-vue",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "HoMeTownJS's vite config presets for Vue",
   "author": {
     "name": "HoMeTownJS",
@@ -37,22 +37,22 @@
     "publish-pkg": "pnpm publish --access public",
     "update-version": "bumpp package.json"
   },
-  "dependencies": {},
   "peerDependencies": {
-    "@vitejs/plugin-legacy": "^4.0.1",
-    "@vitejs/plugin-vue": "^2.3.1",
-    "rollup-plugin-visualizer": "^5.6.0",
-    "unplugin-vue-components": "^0.18.5",
+    "@vitejs/plugin-legacy": "^4.0.2",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "unplugin-vue-components": "^0.24.1",
     "vite-plugin-html": "^3.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^4.0.1",
-    "@vitejs/plugin-vue": "^2.3.1",
-    "bumpp": "^8.2.1",
-    "rollup-plugin-visualizer": "^5.6.0",
+    "@chialab/esbuild-plugin-meta-url": "^0.17.3",
+    "@vitejs/plugin-legacy": "^4.0.2",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "bumpp": "^9.0.0",
+    "rollup-plugin-visualizer": "^5.9.0",
     "tsup": "^6.5.0",
-    "unplugin-vue-components": "^0.18.5",
-    "vite": "^2.9.1",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.2.0",
     "vite-plugin-html": "^3.2.0"
   }
 }
