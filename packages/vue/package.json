@@ -37,7 +37,6 @@
     "publish-pkg": "pnpm publish --access public",
     "update-version": "bumpp package.json"
   },
-  "dependencies": {},
   "peerDependencies": {
     "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
@@ -46,6 +45,7 @@
     "vite-plugin-html": "^3.2.0"
   },
   "devDependencies": {
+    "@chialab/esbuild-plugin-meta-url": "^0.17.3",
     "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "bumpp": "^9.0.0",
